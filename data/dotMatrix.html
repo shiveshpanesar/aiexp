@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .dot {
+        height: 25px;
+        width: 25px;
+        background-color: #626964;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .dotActive {
+        height: 25px;
+        width: 25px;
+        background-color: #f20b0b;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
+
+
+<body>
+    <h1 style="text-align: center; margin-left: auto; margin-right: auto;">Graphical Interface</h1>
+    <div id="matrix" style="text-align: center; margin-left: auto; margin-right: auto;">
+
+    </div>
+
+</body>
+<script>
+    const matrix = [];
+    let matrixDiv = document.getElementById('matrix');
+    matrixDiv.innerHTML = '';
+    function updateMatrix() {
+        matrixDiv.innerHTML = '';
+        for (let row = 1; row <= 8; row++) {
+            for (let col = 1; col <= 8; col++) {
+                let dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.id = row.toString() + col.toString();
+                dot.addEventListener('click', function () {
+                    toggleDot(row.toString() + col.toString());
+                });
+                matrixDiv.appendChild(dot);
+            }
+            let lineBreak = document.createElement('br');
+            matrixDiv.appendChild(lineBreak);
+        }
+    }
+    function toggleDot(rc) {
+        // console.log(rc);
+        var d = document.getElementById(rc);
+        console.log(d.id);
+        console.log(d.className);
+        if (d.className == "dot") {
+            d.className = "dotActive"
+            matrix.push(rc);
+        }
+        else {
+            d.className = "dot"
+            const index = matrix.indexOf(rc);
+            if (index > -1) {
+                matrix.splice(index, 1);
+            }
+        }
+        console.log(matrix);
+        sendData(matrix);
+
+    }
+    updateMatrix();
+</script>
+
+</html>

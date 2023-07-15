@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<style>
+    .black-and-white {
+        filter: grayscale(100%);
+    }
+
+    .buttonClass {
+        width: 50%;
+        height: 30%;
+        display: block;
+        font-size: 50;
+    }
+</style>
+
+<body>
+    <h1 style="font-size: 500%; text-align: center;">Controlling L.E.D.</h1>
+    <img onclick="sData()" id="ledImage"
+        style=" margin-left:auto ; margin-right:auto ;  width: 40%; height: 30%; display: block;"
+        src="data:image/png;base64,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" />
+    <br />
+    <div style=" margin-top: 10%; width: 100%; height: 30%; display: inline-flex;">
+        <button onclick="sData('ledOff')" class="buttonClass" style="  background-color: rgb(211, 119, 119);">
+            Turn led off
+        </button>
+        <button onclick="sData('ledOn')" class="buttonClass" style="background-color: rgb(156, 244, 160);  ">
+            Turn led on
+        </button>
+    </div>
+</body>
+<script>
+    function sData(data) {
+        sendData(data);
+        var image = document.getElementById("ledImage");
+        data == 'ledOn'
+            ? image.classList.remove("black-and-white")
+            : image.classList.add("black-and-white");
+    }
+
+</script>
+
+</html>
